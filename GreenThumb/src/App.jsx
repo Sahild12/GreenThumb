@@ -1,122 +1,82 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import Welcome from './components/Welcome';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showWelcome, setShowWelcome] = useState(true);
+
+  if (showWelcome) {
+    return <Welcome onComplete={() => setShowWelcome(false)} />;
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <main className="app-shell">
+      <header className="topbar">
+        <div className="brand">
+          <span className="brand-mark">G</span>
+          <span>GreenThumb</span>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
+        <nav className="nav-links" aria-label="Main navigation">
+          <a href="#plants">Plants</a>
+          <a href="#services">Services</a>
+          <a href="#journal">Journal</a>
+        </nav>
+        <button type="button" className="nav-button">
+          Book a visit
         </button>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <section className="hero-section">
+        <div className="hero-copy">
+          <p className="eyebrow">Grow with confidence</p>
+          <h2>Nature-inspired care for every corner of your home.</h2>
+          <p className="lead">
+            From curated indoor arrangements to garden planning for thriving outdoor spaces,
+            GreenThumb helps you create a home that feels alive.
+          </p>
+          <div className="cta-row">
+            <button type="button" className="primary-button">
+              Shop plants
+            </button>
+            <button type="button" className="secondary-button">
+              Explore services
+            </button>
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+
+        <div className="hero-visual" aria-label="Featured plants">
+          <div className="plant-card large-card">
+            <span className="badge">Best seller</span>
+            <h3>Monstera</h3>
+            <p>Low-maintenance and lush.</p>
+          </div>
+          <div className="plant-card small-card">
+            <span className="badge alt">New</span>
+            <h3>Fern set</h3>
+            <p>Soft textures, bright spaces.</p>
+          </div>
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <section className="feature-grid" id="services">
+        <article>
+          <span>01</span>
+          <h3>Plant styling</h3>
+          <p>Thoughtful arrangements to refresh your indoor oasis.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Garden planning</h3>
+          <p>Seasonal guidance for sustainable, healthy growth.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Care support</h3>
+          <p>Simple tips and check-ins that keep every plant thriving.</p>
+        </article>
+      </section>
+    </main>
+  );
 }
 
-export default App
+export default App;
