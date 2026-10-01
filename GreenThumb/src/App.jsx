@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Welcome from './components/Welcome';
+<<<<<<< HEAD
+import Hero from './components/Hero';
+=======
 import Nav from './components/Nav';
+>>>>>>> 8f21e41ae2c4ba5abdb73870b52528c87d8a67b2
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -19,6 +23,9 @@ function App() {
     return <Welcome onComplete={() => setShowWelcome(false)} />;
   }
 
+<<<<<<< HEAD
+  return <Hero showNav />;
+=======
   return (
     <>
       <Nav />
@@ -144,6 +151,7 @@ function App() {
       </main>
     </>
   );
+>>>>>>> 8f21e41ae2c4ba5abdb73870b52528c87d8a67b2
 }
 
 export default App;
