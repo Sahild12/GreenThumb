@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import welcome from '../assets/Welcome.png';
 
 function Welcome({ onComplete }) {
-  const container = useRef(null);
+  gsap.registerPlugin(useGSAP);
+  const container = useRef();
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -15,31 +16,26 @@ function Welcome({ onComplete }) {
     };
   }, []);
 
-  useGSAP(
-    () => {
-      const timeline = gsap.timeline({
-        onComplete: () => {
-          if (onComplete) {
-            onComplete();
-          }
-        },
-      });
+  useGSAP(() => {
+    const timeline = gsap.timeline({
+      onComplete: () => {
+        if (onComplete) onComplete();
+      },
+    });
 
-      timeline
-        .fromTo(
-          container.current,
-          { opacity: 0, scale: 1.08 },
-          { opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out' },
-        )
-        .to(container.current, {
-          opacity: 0,
-          duration: 0.8,
-          delay: 0.5,
-          ease: 'power2.inOut',
-        });
-    },
-    { scope: container },
-  );
+    timeline
+      .fromTo(
+        container.current,
+        { opacity: 0, scale: 1.08 },
+        { opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out' },
+      )
+      .to(container.current, {
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.5,
+        ease: 'power2.inOut',
+      });
+  }, { scope: container });
 
   return (
     <div
