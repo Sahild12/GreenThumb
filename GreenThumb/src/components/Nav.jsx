@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 /* -------------------------------------------------------------------------- */
@@ -117,10 +117,14 @@ NavLink.propTypes = {
  *                                   section itself.
  * @param {string}   className     - optional extra classes (e.g. positioning)
  */
-function Nav({ activeSection = "home", onNavigate, className = "" }) {
+function Nav({ activeSection, onNavigate, className = "" }) {
+  const [selectedSection, setSelectedSection] = useState("home");
+  const currentSection = activeSection ?? selectedSection;
+
   const handleLinkClick = (id, event) => {
     // Stop the browser's instant jump so we can control the behaviour.
     event.preventDefault();
+    setSelectedSection(id);
 
     if (onNavigate) {
       onNavigate(id); // parent decides what to do
@@ -139,7 +143,7 @@ function Nav({ activeSection = "home", onNavigate, className = "" }) {
           key={id}
           id={id}
           label={label}
-          isActive={activeSection === id}
+          isActive={currentSection === id}
           onClick={handleLinkClick}
         />
       ))}

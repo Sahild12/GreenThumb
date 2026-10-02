@@ -78,13 +78,17 @@
 }
 
 .hero-nav-wrap {
-  position: absolute;
-  top: 1.25rem;
+  position: fixed;
+  top: 1rem;
   left: 50%;
-  z-index: 20;
+  z-index: 50;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
+  width: max-content;
+  max-width: calc(100% - 2rem);
+  box-sizing: border-box;
   transform: translateX(-50%);
 }
 
@@ -363,13 +367,8 @@
 
 @media (max-width: 900px) {
   .hero-nav-wrap {
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
     display: flex;
     justify-content: center;
-    padding-top: 1rem;
     flex-wrap: wrap;
   }
 
@@ -420,10 +419,16 @@
 
 @media (max-width: 560px) {
   .brand-pill {
-    display: none;
+    display: inline-flex;
+  }
+
+  .hero-nav-wrap {
+    flex-direction: column;
+    gap: 0.6rem;
   }
 
   .hero-nav {
+    max-width: 100%;
     gap: 0.25rem;
     padding: 0.35rem 0.4rem;
   }

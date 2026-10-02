@@ -1,0 +1,18 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "feature/Hero",
+    "feature/Nav",
+    "main"
+  ],
+  "parent": {
+    "feature/Hero": "main",
+    "feature/Nav": "main",
+    "main": null
+  },
+  "order": [
+    "main",
+    "feature/Hero",
+    "feature/Nav"
+  ]
+}
