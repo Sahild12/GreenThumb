@@ -43,7 +43,7 @@ function Hero({ onNavigate, showNav = true }) {
   };
 
   return (
-    <section id="home" ref={container} className="hero-shell" aria-labelledby="hero-title">
+    <>
       {showNav && (
         <div className="hero-nav-wrap">
           <a className="brand-pill" href="#home" aria-label="GreenThumb home">
@@ -54,7 +54,8 @@ function Hero({ onNavigate, showNav = true }) {
         </div>
       )}
 
-      <div className="hero-scene">
+      <section id="home" ref={container} className="hero-shell" aria-labelledby="hero-title">
+        <div className="hero-scene">
         <div className="monstera monstera-left">
           <img src={monstera} alt="" />
         </div>
@@ -116,8 +117,9 @@ function Hero({ onNavigate, showNav = true }) {
         <div className="leaf-accent">
           <img src={leaf} alt="" />
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }
 
